@@ -8,11 +8,13 @@ public class Player : MonoBehaviour {
     public float currentLife;
 
     public SpriteRenderer currentLifeSprite;
+    public float startLifeSpriteWidth;
     public float currentLifeSpriteWidth = 2.1f;
     public float currentLifeSpriteHight = 0.73f;
 
     void Start()
     {
+        currentLifeSpriteWidth = startLifeSpriteWidth;
         currentLife = startLife;
         currentLifeSprite.size = new Vector2(currentLifeSpriteWidth, currentLifeSpriteHight);
     }
@@ -25,13 +27,25 @@ public class Player : MonoBehaviour {
 
         if (currentLife >= 0)
         {
-            currentLifeSprite.size = new Vector2(currentLifeSprite.size.x - (currentLifeSpriteWidth * damageAmount), currentLifeSpriteHight);
+            currentLifeSprite.size = new Vector2(currentLifeSprite.size.x - (startLifeSpriteWidth * damageAmount), currentLifeSpriteHight);
             GameUIManager.instance.UpdatePlayerLife();
         }
         else
         {
             Die();
         }
+    }
+
+    public void healHit(float heal)
+    {
+        float healAmount = heal / startLife;
+        currentLife += heal;
+
+        if (currentLife <= startLife)
+        {
+            currentLifeSprite.size = new Vector2(currentLifeSprite.size.x + (startLifeSpriteWidth * healAmount), currentLifeSpriteHight);
+            GameUIManager.instance.UpdatePlayerLife();
+        }       
     }
 
     public void Die()

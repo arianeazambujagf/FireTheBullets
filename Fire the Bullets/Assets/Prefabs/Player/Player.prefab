@@ -328,6 +328,7 @@ MonoBehaviour:
   startLife: 100
   currentLife: 0
   currentLifeSprite: {fileID: 212584504824890798}
+  startLifeSpriteWidth: 2.1
   currentLifeSpriteWidth: 2.1
   currentLifeSpriteHight: 0.73
 --- !u!114 &114301073479374066

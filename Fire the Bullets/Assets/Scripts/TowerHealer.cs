@@ -7,7 +7,7 @@ public class TowerHealer : MonoBehaviour, ITowerProjectile{
     //public float timeBtwShots = 2f;
 
     private Transform target;
-
+    public float healStrenght = 20f;
     public float speed = 70f;
 
 	public void SetTarget(Transform target){
@@ -44,6 +44,7 @@ public class TowerHealer : MonoBehaviour, ITowerProjectile{
 
     void hitTarget()
     {
+        GameManager.instance.player.healHit(healStrenght);
         Destroy(gameObject);
     }
 }
