@@ -167,9 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ebb69ab19f8448a8b51c0a200a735d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startLife: 100
+  startLife: 999999
   currentLife: 0
   currentLifeSprite: {fileID: 212216044580892104}
+  startLifeSpriteWidth: 2.1
   currentLifeSpriteWidth: 2.1
   currentLifeSpriteHight: 0.73
 --- !u!212 &212154242671885580

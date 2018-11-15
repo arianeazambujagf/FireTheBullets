@@ -43,7 +43,7 @@ public class EnemyAIShooterToPlayer : MonoBehaviour {
 			}
 
 			//Enemy Shots time between them
-			if (timeBtwShots <= 0) {
+			if (Vector3.Distance(GameManager.instance.player.transform.position, transform.position) <= 15 && timeBtwShots <= 0) {
 				EnemyBullet bullet = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<EnemyBullet>();
 				bullet.SetTarget(new Vector2(currentEnemy.x, currentEnemy.y));
 

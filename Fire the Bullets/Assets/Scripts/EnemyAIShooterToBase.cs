@@ -35,7 +35,7 @@ public class EnemyAIShooterToBase : MonoBehaviour{
 			currentEnemy = new Vector2(GameManager.instance.baseObject.transform.position.x, GameManager.instance.baseObject.transform.position.y);
 
 			//Enemy Shots
-			if (timeBtwShots <= 0) {
+			if ( Vector3.Distance(GameManager.instance.baseObject.transform.position, transform.position) <= 15 && timeBtwShots <= 0) {
 				EnemyBullet bullet = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<EnemyBullet>();
 				bullet.SetTarget(currentEnemy);
 

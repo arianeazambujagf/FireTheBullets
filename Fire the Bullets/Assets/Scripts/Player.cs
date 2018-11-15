@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
+	public float currentScore = 0;
 
     public float startLife;
     public float currentLife;
@@ -25,15 +27,15 @@ public class Player : MonoBehaviour {
 
         currentLife -= bullet.damage;
 
-        if (currentLife >= 0)
-        {
+		if( currentLife <= 0 ){
+			currentLife = 0;
+			currentLifeSprite.size = new Vector2(0, currentLifeSpriteHight);
+			Die();
+		}else if (currentLife > 0){
             currentLifeSprite.size = new Vector2(currentLifeSprite.size.x - (startLifeSpriteWidth * damageAmount), currentLifeSpriteHight);
-            GameUIManager.instance.UpdatePlayerLife();
         }
-        else
-        {
-            Die();
-        }
+
+		GameUIManager.instance.UpdatePlayerLife();
     }
 
     public void healHit(float heal)
@@ -41,15 +43,22 @@ public class Player : MonoBehaviour {
         float healAmount = heal / startLife;
         currentLife += heal;
 
-        if (currentLife <= startLife)
-        {
+		if( currentLife >= startLife ){
+			currentLife = startLife;
+			currentLifeSprite.size = new Vector2(startLifeSpriteWidth, currentLifeSpriteHight);
+		}else if (currentLife < startLife){
             currentLifeSprite.size = new Vector2(currentLifeSprite.size.x + (startLifeSpriteWidth * healAmount), currentLifeSpriteHight);
-            GameUIManager.instance.UpdatePlayerLife();
-        }       
+        }
+
+		GameUIManager.instance.UpdatePlayerLife();
     }
 
     public void Die()
     {
-
+		GameManager.instance.GameOver();
     }
+
+	public void addScore(float score){
+		currentScore += score;
+	}
 }

@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe27a193ecb7b847b086d5b5aa32abc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 10
   initialLife: 100
   currentLife: 0
 --- !u!114 &114951000186137498
@@ -103,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1b8b6b09316445e8ba4b53752574291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 3
   stoppingDistance: 4
   retreatDistance: 3
   startTimeBtwShots: 1

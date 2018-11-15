@@ -65,7 +65,7 @@ public class TowerExplosion : MonoBehaviour, ITowerProjectile
     }
 
     void Damage(Transform enemy){
-        Destroy(enemy.gameObject);
+		target.GetComponent<Enemy>().Hit(100);
     }
 
     private void OnDrawGizmosSelected()

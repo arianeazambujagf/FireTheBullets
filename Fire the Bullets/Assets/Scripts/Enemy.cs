@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+	public float score = 10f;
     public float initialLife;
     public float currentLife;
 
@@ -18,6 +19,7 @@ public class Enemy : MonoBehaviour
 
         if (currentLife <= 0)
         {
+			GameManager.instance.player.addScore(score);
             Destroy(gameObject);
         }
     }

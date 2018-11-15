@@ -37,7 +37,7 @@ public class TowerBullet : MonoBehaviour, ITowerProjectile {
     }
 
     void hitTarget(){
-        Destroy(target.gameObject);
         Destroy(gameObject);
+		target.GetComponent<Enemy>().Hit(100);
     }
 }
