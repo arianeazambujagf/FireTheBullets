@@ -41,8 +41,7 @@ GameObject:
   - component: {fileID: 61949538698828514}
   - component: {fileID: 114173288358743630}
   - component: {fileID: 95022859666543218}
-  - component: {fileID: 58863930349950058}
-  - component: {fileID: 114964206494910248}
+  - component: {fileID: 114281804086492474}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -260,21 +259,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &58863930349950058
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1405938848870032}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 5
 --- !u!61 &61949538698828514
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -330,6 +314,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+--- !u!114 &114281804086492474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1405938848870032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b2f16a0e07b6479689ccfc19ea5f991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startLife: 100
+  currentLife: 0
+  currentLifeSprite: {fileID: 212584504824890798}
+  currentLifeSpriteWidth: 2.1
+  currentLifeSpriteHight: 0.73
 --- !u!114 &114301073479374066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -346,22 +346,6 @@ MonoBehaviour:
   startTimeBtwShots: 0
   maxAmmo: 3
   reoladTime: 2
---- !u!114 &114964206494910248
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1405938848870032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 595ccc7e5c6ae494d951c55b7d22a31e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startLife: 100
-  currentLife: 0
-  currentLifeSprite: {fileID: 212584504824890798}
-  currentLifeSpriteWidth: 2.1
-  currentLifeSpriteHight: 0.73
 --- !u!135 &135788021959520868
 SphereCollider:
   m_ObjectHideFlags: 1

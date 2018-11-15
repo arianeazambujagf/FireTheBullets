@@ -20,6 +20,7 @@ public class EnemyBullet : MonoBehaviour {
     public void SetTarget(Vector2 newTarget)
     {
         target = newTarget;
+		transform.right = new Vector3(target.x, target.y, 0) - transform.position; //lookAt() but in 2D
     }	
 
 	void Update () {
@@ -34,29 +35,24 @@ public class EnemyBullet : MonoBehaviour {
         //    Debug.Log("cheguei ao target");
         //}
 
-        //test
-        player = GameManager.instance.player.transform;
-
-        target = new Vector2(player.position.x, player.position.y);
-
-        //to follow the player isntead of target do player.position
-        transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+		if (target != null) {
+			//to follow the player isntead of target do player.position
+			transform.position += transform.right * speed * Time.deltaTime;
+		}
         
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") || collision.CompareTag("Base") || collision.CompareTag("Bullet"))
-        {
-            GameManager.instance.player.Hit(this);
-            DestroyProjectile();
-        }
-        else if (collision.CompareTag("Base") || collision.CompareTag("Bullet"))
-        {
-            //Destroy(gameObject, 2f);
-            //test
-            DestroyProjectile();
-        }
+		if (collision.CompareTag("Player")) {
+			GameManager.instance.player.Hit(this);
+			DestroyProjectile();
+		} else if (collision.CompareTag("Base")) {
+			GameManager.instance.baseObject.Hit(this);
+			DestroyProjectile();
+		} else if (collision.CompareTag("Bullet")) {
+			DestroyProjectile();
+		}
     }
 
     void DestroyProjectile(){

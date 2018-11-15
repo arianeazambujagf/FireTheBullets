@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
 
-    public Transform target;
     private new Camera camera;
 
 	void Start () {
@@ -14,9 +13,9 @@ public class CameraFollow : MonoBehaviour {
 	void Update () {
         camera.orthographicSize = 10; //(Screen.height / 100f / 1f)
 
-        if (target)
+		if (GameManager.instance.player != null)
         {
-            transform.position = Vector3.Lerp(transform.position, target.position, 0.1f) + new Vector3(0, 0, -10f);
+			transform.position = Vector3.Lerp(transform.position, GameManager.instance.player.transform.position, 0.1f) + new Vector3(0, 0, -10f);
         }
     }
 }

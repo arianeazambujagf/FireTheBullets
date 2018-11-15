@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerKill : MonoBehaviour {
+public class Tower : MonoBehaviour
+{
 
     private Transform target;
 
@@ -16,11 +17,13 @@ public class TowerKill : MonoBehaviour {
     public GameObject towerBullet;
     public Transform firePoint;
 
-    void Start () {
+    void Start()
+    {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
-	}
-	
-	void Update () {
+    }
+
+    void Update()
+    {
         if (target == null)
         {
             return;
@@ -35,7 +38,8 @@ public class TowerKill : MonoBehaviour {
         fireCountdown -= Time.deltaTime;
     }
 
-    void UpdateTarget(){
+    void UpdateTarget()
+    {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(tagerino);
 
         float shortestDistance = Mathf.Infinity;
@@ -61,13 +65,14 @@ public class TowerKill : MonoBehaviour {
         }
     }
 
-    void Shoot(){
+    void Shoot()
+    {
         GameObject bulletGo = (GameObject)Instantiate(towerBullet, firePoint.position, Quaternion.identity);
-        TowerBullet bullet = bulletGo.GetComponent<TowerBullet>();
+		ITowerProjectile bullet = bulletGo.GetComponent<ITowerProjectile>();
 
         if (bullet != null)
         {
-            bullet.Seek(target);
+			bullet.SetTarget(target);
         }
     }
 }

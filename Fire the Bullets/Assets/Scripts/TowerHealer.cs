@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerHealer : MonoBehaviour{
+public class TowerHealer : MonoBehaviour, ITowerProjectile{
 
     //public float timeBtwShots = 2f;
 
@@ -10,10 +10,9 @@ public class TowerHealer : MonoBehaviour{
 
     public float speed = 70f;
 
-    public void Seek(Transform _target)
-    {
-        target = _target;
-    }
+	public void SetTarget(Transform target){
+		this.target = target;
+	}
 
     void Start()
     {

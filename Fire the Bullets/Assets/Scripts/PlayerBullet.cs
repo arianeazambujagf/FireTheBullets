@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerBullet : MonoBehaviour {
 
     public float speed;
+	public float damage;
     private Vector2 target;
 
     void Start()
@@ -35,9 +36,10 @@ public class PlayerBullet : MonoBehaviour {
         if (collision.CompareTag("Enemy") || collision.CompareTag("Bullet"))
         {
             DestroyProjectile();
-            if (collision.CompareTag("Enemy"))
+            
+			if (collision.CompareTag("Enemy"))
             {
-                Destroy(gameObject, 2f);
+				collision.GetComponent<Enemy>().Hit(damage);
             }
         }
     }

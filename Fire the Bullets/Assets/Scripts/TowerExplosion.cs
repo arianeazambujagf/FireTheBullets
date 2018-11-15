@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerExplosion : MonoBehaviour
+public class TowerExplosion : MonoBehaviour, ITowerProjectile
 {
 
     private Transform target;
@@ -10,10 +10,9 @@ public class TowerExplosion : MonoBehaviour
     public float speed = 70f;
     public float explosionRadius = 0f;
 
-    public void Seek(Transform _target)
-    {
-        target = _target;
-    }
+	public void SetTarget(Transform target){
+		this.target = target;
+	}
 
     void Start()
     {
